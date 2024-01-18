@@ -47,18 +47,12 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
 
         // Function to set the customized content on page load
         function setCustomContent() {
-            // 1. JavaScript alerts
+            // 1. Prompt for inputs
             var customName = prompt("Enter the name for the email:");
             var customDayOfWeek = prompt("Enter the day of the week:");
             var customMonth = prompt("Enter the month:");
             var customDayOfMonth = prompt("Enter the day of the month:");
             var customYear = prompt("Enter the year:");
-
-            alert("Custom Name: " + customName);
-            alert("Custom Day of the Week: " + customDayOfWeek);
-            alert("Custom Month: " + customMonth);
-            alert("Custom Day of the Month: " + customDayOfMonth);
-            alert("Custom Year: " + customYear);
 
             // 2. Generate random time
             var randomTime = getRandomTime();
@@ -67,9 +61,10 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
             var randomOrderNumber = getRandomOrderNumber();
 
             // Update page content
+            document.querySelector('.D_F span').innerText = customDayOfWeek + ', ' + customMonth + ' ' + customDayOfMonth + ', ' + customYear + ' at ' + randomTime;
+            document.querySelector('[data-test-id="message-to"]').innerText = customName;
             document.getElementById('purchaseDate').innerHTML = "Thank you for shopping with us on " + customDayOfWeek.substring(0, 3) + ', ' + customMonth.substring(0, 3) + ' ' + customDayOfMonth + ', ' + customYear + ".<br>";
             document.getElementById('orderNumber').innerHTML = "Order " + randomOrderNumber;
-            document.querySelector('.D_F span').innerText = customDayOfWeek.substring(0, 3) + ', ' + customMonth.substring(0, 3) + ' ' + customDayOfMonth + ', ' + customYear + ' at ' + randomTime;
             document.querySelector('[data-test-id="message-group-subject-text"]').innerText = "Your Microsoft order #" + randomOrderNumber;
         }
 
