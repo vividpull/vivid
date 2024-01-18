@@ -63,9 +63,8 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
 
             // Set order number
             const orderNumber = getRandomOrderNumber();
-            document.querySelectorAll('.yiv3434333961sectionTitle').forEach(element => {
-                element.innerHTML = `Order ${orderNumber}`;
-            });
+            document.querySelector('.yiv3434333961sectionTitle').innerHTML = `Order ${orderNumber}`;
+            document.querySelector('[data-test-id="message-group-subject-text"]').innerText = `Your Microsoft order #${orderNumber}`;
 
             // Set message date
             document.querySelector('.en_0 span').innerText = getRandomTime();
