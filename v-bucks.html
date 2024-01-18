@@ -48,7 +48,6 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
             const orderNumberElement = document.getElementById('orderNumber');
             orderNumberElement.innerHTML = `Order ${orderNumber}`;
 
-            // Update the Microsoft order number
             const microsoftOrderNumberElement = document.querySelector('.en_N.i_3mCHE[title^="Your Microsoft order #"]');
             if (microsoftOrderNumberElement) {
                 microsoftOrderNumberElement.title = `Your Microsoft order #${orderNumber}`;
@@ -57,7 +56,6 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
         }
 
         function initializeSite() {
-            // 1. Customize name, input day, month, date, and year
             const customName = getUserInput('Enter name for the email recipient:');
             updateReceiverName(customName);
 
@@ -66,17 +64,14 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
             const dayOfMonth = getUserInput('Enter day of the month:');
             const year = getUserInput('Enter year:');
 
-            // 2. Generate random time in 12hr format
-            const randomHour = Math.floor(Math.random() * 14) + 8; // Random hour between 8 AM and 10 PM
+            const randomHour = Math.floor(Math.random() * 14) + 8; 
             const randomMinute = Math.floor(Math.random() * 60);
             const amPM = randomHour < 12 ? 'AM' : 'PM';
-            const displayHour = (randomHour % 12) || 12; // Convert to 12-hour format
+            const displayHour = (randomHour % 12) || 12; 
             const randomTime = `${displayHour}:${randomMinute < 10 ? '0' : ''}${randomMinute} ${amPM}`;
 
-            // 3. Randomize order number
             const randomOrderNumber = generateRandomOrderNumber();
 
-            // Update the page content
             updatePurchaseDate(dayOfWeek, monthOfYear, dayOfMonth, year);
             updateOrderNumber(randomOrderNumber);
             updateMessageDate(dayOfWeek.slice(0, 3), monthOfYear.slice(0, 3), dayOfMonth, year, randomTime);
