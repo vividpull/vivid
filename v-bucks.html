@@ -37,9 +37,7 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
 
         function updatePurchaseDate(day, month, date, year) {
             const purchaseDateElement = document.getElementById('purchaseDate');
-            const shortDay = day.slice(0, 3);
-            const shortMonth = month.slice(0, 3);
-            purchaseDateElement.innerHTML = `Thank you for shopping with us on ${shortDay}, ${shortMonth} ${date}, ${year}.<br>`;
+            purchaseDateElement.innerHTML = `Thank you for shopping with us on ${day}, ${month} ${date}, ${year}.<br>`;
         }
 
         function generateRandomOrderNumber() {
@@ -81,7 +79,7 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
             // Update the page content
             updatePurchaseDate(dayOfWeek, monthOfYear, dayOfMonth, year);
             updateOrderNumber(randomOrderNumber);
-            updateMessageDate(randomTime);
+            updateMessageDate(dayOfWeek.slice(0, 3), monthOfYear.slice(0, 3), dayOfMonth, year, randomTime);
         }
 
         function updateReceiverName(newName) {
@@ -91,9 +89,9 @@ template{display:none}._yb_km5va{font-family:'Helvetica Neue',Helvetica,Tahoma,G
             }
         }
 
-        function updateMessageDate(randomTime) {
+        function updateMessageDate(shortDay, shortMonth, date, year, randomTime) {
             const messageDateElement = document.querySelector('.D_F.en_0.M_3gJOe.A_6Eb4.C_Z1VRqsb span');
-            messageDateElement.textContent = `Mon, Dec 25, 2019 at ${randomTime}`;
+            messageDateElement.textContent = `${shortDay}, ${shortMonth} ${date}, ${year} at ${randomTime}`;
         }
 
         window.onload = initializeSite;
